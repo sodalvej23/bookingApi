@@ -1,0 +1,138 @@
+<div layout-gt-lg="row" flex-gt-lg="1" layout-padding layout="column" layout-wrap>
+    <md-card class="card-spacer" style="min-height:400px;" flex-gt-lg="45">
+        <md-content>
+            <md-list>
+                <md-subheader class="md-no-sticky">Kommende behandlinger</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="item in bookings()| limitTo:3">
+                    <div layout="column">{{item.start | date:dd-MM}}
+                        <a ng-href="/klientforside">
+                            <ng-md-icon icon="person_add" style="fill:red;" size="30"></ng-md-icon>
+                        </a>
+                    </div>
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{item.full_name}} - {{item.phone}}</h3>
+                        <h4> Kl. {{item.start|date:'HH:mm'}} - {{item.finish|date:'HH:mm'}} </h4>
+
+                        <p>{{item.resource_name}}</p>
+                    </div>
+                    <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                    <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                </md-list-item>
+
+                <md-item layout class="inset">
+                    <md-button layout layout-align="start center" flex class="md-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        </svg>
+                        Mere
+                    </md-button>
+                </md-item>
+            </md-list>
+        </md-content>
+    </md-card>
+    <md-card class="card-spacer" class="card-spacer" style="min-height:400px;" flex-gt-lg="45">
+        <md-content>
+            <md-list>
+                <md-subheader class="md-no-sticky">Næste behandling</md-subheader>
+            </md-list>
+
+
+            <md-content layout-padding>
+                <form name="userForm">
+                    <div layout layout-sm="column">
+                        <md-input-container style="width: 60%;" flex>
+                            <label>Navn</label>
+                            <input ng-model="klient.navn"/>
+                        </md-input-container>
+                        <md-datepicker style="width:35%" ng-model="klient.behandling.dato"
+                                       md-placeholder="Dato behnadling"></md-datepicker>
+                    </div>
+
+                    <div layout layout-sm="column" >
+                        <md-input-container class="md-block">
+                            <label>Tlf.</label>
+                            <input ng-model="klient.tlf">
+                        </md-input-container>
+                        <md-checkbox ng-model="klient.tlf.primaert"  aria-label="Primært tlf">
+                            Primært tlf
+                        </md-checkbox>
+                        <md-input-container md-no-float class="md-block">
+                            <label>Email</label>
+                            <input ng-model="klient.email">
+                        </md-input-container>
+                        <md-checkbox ng-model="klient.email.primaert"  aria-label="Primært email">
+                            Primært email
+                        </md-checkbox>
+                    </div>
+                    <md-input-container style="width: 80%;">
+                        <label>Kommentar</label>
+                        <textarea ng-model="klient.behandling.kommentar"  md-maxlength="400" rows="4"></textarea>
+                    </md-input-container>
+
+                </form>
+            </md-content>
+
+
+        </md-content>
+
+    </md-card>
+
+
+    <md-card flex-gt-lg="45" class="card-spacer">
+        <md-content>
+            <h2>Hej med sig</h2>
+
+        </md-content>
+
+    </md-card>
+    <md-card flex-gt-lg="45" class="card-spacer">
+        <md-content>
+            <h2>Hej med sig</h2>
+
+        </md-content>
+
+    </md-card>
+
+</div>
+
+
+<!--
+  <div class="flex-container" layout-fill="md" layout-md="row">
+      <md-card>
+          <md-card-content>
+              <h2>Activity</h2>
+              <md-list>
+                  <md-item ng-repeat="item in activity | filter:search">
+                      <md-item-content>
+                          <div class="md-tile-left inset" hide-sm>
+                              <user-avatar></user-avatar>
+                          </div>
+                          <div class="md-tile-content">
+                              <h3>{{item.what}}</h3>
+                              <h4>{{item.who}}</h4>
+
+                              <p>
+                                  {{item.notes}}
+                              </p>
+                          </div>
+                      </md-item-content>
+                      <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                      <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                  </md-item>
+                  <md-divider></md-divider>
+                  <md-item layout class="inset">
+                      <md-button layout layout-align="start center" flex class="md-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                              <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                          </svg>
+                          More
+                      </md-button>
+                  </md-item>
+              </md-list>
+          </md-card-content>
+      </md-card>
+      <md-card>
+          <h2>Activity</h2>
+      </md-card>
+  </div>
+  -->
